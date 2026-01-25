@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <h2>Product List</h2>
+    <h2>{{ $title }}</h2>
 
     <a href="{{ route('add') }}">Add product</a>
 
@@ -21,23 +21,13 @@
                 <th>Price</th>
             </tr>
         </thead>
-        <tbody>
+        @foreach ($products as $product)
             <tr>
-                <td>1</td>
-                <td>Laptop Dell XPS</td>
-                <td>30,000,000 VND</td>
+                <td>{{ $product['id'] }}</td>
+                <td>{{ $product['name'] }}</td>
+                <td>{{ $product['price'] }}</td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>iPhone 15 Pro</td>
-                <td>28,000,000 VND</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>AirPods Pro</td>
-                <td>5,500,000 VND</td>
-            </tr>
-        </tbody>
+        @endforeach
     </table>
 
 </body>
