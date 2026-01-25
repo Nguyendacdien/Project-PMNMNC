@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,17 +9,27 @@ Route::get('/', function () {
 });
 
 Route::prefix('/product') -> group(function(){
-   Route::get('/', function () {
-    return view('product.index');
-}) -> name('product.index');
+    Route::controller(ProductController::class) -> group(function () {
+        Route::get('/', 'index') -> name('product.index');
 
-    Route::get('/add', function () {
-    return view('product.add');
-}) -> name('add');
+        Route::get('/add', 'create') -> name('add');
 
-    Route::get('/{id?}', function(string $id='123'){
-    return view('product.detail', data: ['id' => $id]);
-}); 
+        Route::get('/detail/{id?', 'get');
+
+        Route::post('/store', 'store');
+    });
+});
+
+Route::prefix('/auth') -> group(function(){
+    Route::controller(AuthController::class) -> group(function () {
+        Route::get('/login', 'login') -> name('auth.login');
+
+        Route::post('/checklogin', 'checklogin') -> name('checklogin');
+
+        Route::get('/register', 'register') -> name('register');
+
+        Route::post('/checkregister', 'checkregister') -> name ('register.post');
+    });
 });
 
 Route::get('/sinhvien/{name?}/{mssv?}', function(string $name = 'Luong Xuan Hieu', string $mssv = '123456'){

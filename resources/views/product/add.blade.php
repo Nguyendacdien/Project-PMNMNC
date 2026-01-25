@@ -7,7 +7,8 @@
 </head>
 <body>
     <h2>Add New Product</h2>
-    <form >
+    <form action="/product/store", method="post">
+        @csrf
         <div>
             <label for="name">Product Name:</label>
             <input type="text" placeholder="Enter Product Name">
