@@ -25,12 +25,28 @@ class AuthController extends Controller
     }
 
     public function checkregister( Request $request) {
-        $name= $request -> input('name');
-        $pass= $request -> input('pass');
-        if($name == "NguyenDacDien" && $pass == "0004667"){
+        $name = $request->input('name');
+        $pass = $request->input('pass');
+        $repass = $request->input('repass');
+        $mssv = $request->input('mssv');
+        $lopmonhoc = $request->input('lopmonhoc');
+        $gioitinh = $request->input('gioitinh');
+        
+        if($name == "Diennd" && $pass == "123abc" && $repass == "123abc" && 
+           $mssv == "0004667" && $lopmonhoc == "67PM2" && $gioitinh == "Nam"){
             return view('Auth.Login', ['success' => 'Registration successful! Please log in.']);
         } else {
             return view('Auth.Register', ['error' => 'Information does not match']);
         }
+    }
+
+    public function ageStore(Request $request) {
+        $age = $request->input('age');
+        session(['age' => $age]);
+        return redirect()->route('product.index');
+    }
+
+    public function ageSelect() {
+        return view('Auth.AgeChecking');
     }
 }
