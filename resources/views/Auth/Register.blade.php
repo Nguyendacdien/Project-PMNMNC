@@ -32,6 +32,39 @@
 
         <br>
 
+        <div>
+            <label for="repass">Confirm Password:</label>
+            <input type="password" name="repass" placeholder="Confirm Password">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="mssv">Mã Số Sinh Viên:</label>
+            <input type="text" name="mssv" placeholder="Enter Student ID">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="lopmonhoc">Lớp Môn Học:</label>
+            <input type="text" name="lopmonhoc" placeholder="Enter Class">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="gioitinh">Giới Tính:</label>
+            <select name="gioitinh">
+                <option value="">-- Chọn giới tính --</option>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+                <option value="Khác">Khác</option>
+            </select>
+        </div>
+
+        <br>
+
         <button type="submit">Register</button>
     </form>
 </body>
