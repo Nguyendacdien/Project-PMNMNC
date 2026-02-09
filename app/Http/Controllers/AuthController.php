@@ -49,4 +49,8 @@ class AuthController extends Controller
     public function ageSelect() {
         return view('Auth.AgeChecking');
     }
+
+    public function layoutAdmin() {
+        return view('layout.admin');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Middleware;
 use App\Http\Middleware\CheckTimeAccess;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
@@ -15,12 +16,11 @@ class ProductController extends Controller implements HasMiddleware
 
     public function index(){
         $title = "Product List";
-        return view("product.index",["title" => $title,
-            'products' => [
-            ['id' => 1, 'name' => 'Product A', 'price' => 100000],
-            ['id' => 2, 'name' => 'Product B', 'price' => 100000],
-            ['id' => 3, 'name' => 'Product C', 'price' => 100000],
-        ]]);
+        $product = Product::all();
+        return view("admin.product.index", [
+            'title' => $title,
+            'products' => $product,
+        ]);
     }
 
     public function getDetail(string $id = "123") {
