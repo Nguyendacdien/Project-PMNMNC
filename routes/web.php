@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,6 +51,18 @@ Route::post('/age/store', [AuthController::class, 'ageStore'])->name('age.store'
 Route::get('/banco/{n}', function($n){
     return view('banco', ['n' => $n]);
 });
+
+Route::get('/layout/admin', [AuthController::class, 'layoutAdmin'])->name('admin.layout');
+
+Route::get('/layout/admin/categories', [CategoryController::class, 'index'])->name('categories.index');
+
+Route::get('/layout/admin/categories/add', [CategoryController::class, 'create'])->name('categories.create');
+
+Route::post('/layout/admin/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+
+Route::get('/layout/admin/categories/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+
+Route::put('/layout/admin/categories/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
 
 Route::fallback(function(){
     return view('Error.404');
