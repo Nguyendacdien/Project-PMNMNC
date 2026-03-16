@@ -64,6 +64,14 @@ Route::get('/layout/admin/categories/edit/{id}', [CategoryController::class, 'ed
 
 Route::put('/layout/admin/categories/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
 
+// Product CRUD routes
+Route::get('/layout/admin/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/layout/admin/products/add', [ProductController::class, 'create'])->name('products.create');
+Route::post('/layout/admin/products/store', [ProductController::class, 'store'])->name('products.store');
+Route::get('/layout/admin/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
+Route::put('/layout/admin/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
+Route::delete('/layout/admin/products/delete/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
 Route::fallback(function(){
     return view('Error.404');
 });
